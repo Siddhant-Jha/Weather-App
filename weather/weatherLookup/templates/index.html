@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+
+    <br>
+    {% if api %}
+        {% if api == "Error..." %}
+            There was an error, Please try again...
+        {% else %}
+
+            <div class="jumbotron">
+                <h1 class="display-4">City = {{api.name}}</h1>
+                <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+                <hr class="my-4">
+                <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+                <a class="btn btn-primary btn-lg" href="#" role="button" name="city" >Learn more</a>
+            </div>
+
+            {{api}}
+            <br>
+            <h2>Longitude = {{api.coord.lon}} </h2>
+            <h2>Latitude = {{api.coord.lat}} </h2>
+            <h2>Weather Now = {{api.weather.0.main}} </h2>
+            <h2>Weather Forcast = {{api.weather.0.description}} </h2>
+        {% endif %}
+    {% endif %}
+</body>
+</html>
+
+{% endblock%}
